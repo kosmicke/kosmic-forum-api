@@ -1,18 +1,19 @@
 const topicsController = require("../controllers/topics.controller")
+const { authorize } = require("../controllers/authentication.controller")
 
 module.exports = (app) => {
     
     app.route('/topics')
-        .post(topicsController.create)
-        .get(topicsController.list)
+        .post(authorize, topicsController.create)
+        .get(authorize, topicsController.list)
 
     app.route('/topics/:id')
-        .get(topicsController.getById)
-        .put(topicsController.edit)
-        .delete(topicsController.remove)
+        .get(authorize, topicsController.getById)
+        .put(authorize, topicsController.edit)
+        .delete(authorize, topicsController.remove)
 
     app.route('/topics/:id/likes')
-        .get(topicsController.getLikes)
-        .post(topicsController.like)
+        .get(authorize, topicsController.getLikes)
+        .post(authorize, topicsController.like)
         
 }

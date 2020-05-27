@@ -4,15 +4,15 @@ const { authorize } = require("../controllers/authentication.controller")
 module.exports = (app) => {
     
     app.route('/posts')
-        .post(postsController.create)
-        .get(postsController.list)
+        .post(authorize, postsController.create)
+        .get(authorize, postsController.list)
 
     app.route('/posts/:id')
-        .put(postsController.edit)
-        .delete(postsController.remove)
+        .put(authorize, postsController.edit)
+        .delete(authorize, postsController.remove)
 
     app.route('/posts/:id/likes')
-        .get(postsController.getLikes)
-        .post(postsController.like)
+        .get(authorize, postsController.getLikes)
+        .post(authorize, postsController.like)
         
 }
