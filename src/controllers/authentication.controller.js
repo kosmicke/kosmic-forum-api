@@ -27,7 +27,8 @@ const signIn = async (req, res) => {
         user: {
             name : user.name,
             nickName : user.nickName,
-            email : user.email
+            email : user.email,
+            avatar : user.avatar
         }
     }
 
